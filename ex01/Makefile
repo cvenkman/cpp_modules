@@ -1,16 +1,16 @@
 NAME = PhoneBook
 
-SRCS =	PhoneBook.cpp
+SRCS =	PhoneBook.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-HEADER = 
+HEADER = PhoneBook.hpp Contact.hpp
 
 FLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) $(HEADER)
 	clang++ $(OBJS) $(FLAGS) -o $(NAME)
 
 clean:
