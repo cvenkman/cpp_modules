@@ -1,14 +1,14 @@
-NAME = PhoneBook
+NAME = bzzz
 
-SRCS =	PhoneBook.cpp main.cpp Contact.cpp
+SRCS =	Account.cpp test.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-HEADER = PhoneBook.hpp Contact.hpp
+DEP = $(OBJS:%.o=%.d)
+
+HEADER = Account.hpp
 
 FLAGS = -Wall -Wextra -Werror
-
-RM = rm -f
 
 all : $(NAME)
 
@@ -16,10 +16,10 @@ $(NAME) : $(OBJS) $(HEADER)
 	c++ $(FLAGS) -o $(NAME) $(OBJS)
 
 clean:
-	$(RM) $(OBJS)
+	rm -f $(OBJS)
 
 fclean : clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re : fclean all
 

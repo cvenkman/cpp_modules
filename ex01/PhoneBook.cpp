@@ -60,20 +60,18 @@ void PhoneBook::displaySearch() {
 		std::cout << "Empty phone book" << std::endl;
 		return ;
 	}
-	int i = 0;
-	while (i <= this->contacts_count - 1) {
+	for (int i = 0; i <= this->contacts_count - 1; i++) {
 		std::cout << std::setw(10) << i + 1 << '|';
 		std::cout << std::setw(10) << shortDisplay(this->phone_book[i].getName()) << "|";
 		std::cout << std::setw(10) << shortDisplay(this->phone_book[i].getLastName()) << "|";
 		std::cout << std::setw(10) << shortDisplay(this->phone_book[i].getNickname()) << std::endl;
-		i++;
 	}
 	//display full info about one contact
 	std::string index_tmp;
 	std::cout << "Index: ";
 	getline(std::cin, index_tmp);
 	int index = index_tmp[0] - '0';
-	if (index > this->contacts_count || index < 1)
+	if (index_tmp.size() > 1 || index > this->contacts_count || index < 1)
 		std::cout << "No such contact exists!" << std::endl;
 	else {
 		--index;

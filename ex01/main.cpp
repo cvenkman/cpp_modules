@@ -24,7 +24,6 @@ void welcome() {
 // 	~A(){};
 // };
 
-
 int main() {
 	int i = 4;
 	PhoneBook book;
@@ -37,4 +36,5 @@ int main() {
 			break;
 		book.menu(cmd);
 	}
+	return (0);
 }

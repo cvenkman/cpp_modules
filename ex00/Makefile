@@ -9,7 +9,7 @@ FLAGS = -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	clang++ $(OBJS) $(FLAGS) -o $(NAME)
+	c++ $(OBJS) $(FLAGS) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
