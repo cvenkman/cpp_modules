@@ -1,7 +1,7 @@
 #include "Zombie.hpp"
 
-Zombie::Zombie(std::string name) {
-	this->name = name;
+Zombie::Zombie(std::string name_) : name(name_) {
+	// this->name = name;
 	this->announce();
 }
 

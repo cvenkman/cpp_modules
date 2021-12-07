@@ -1,6 +1,7 @@
+// Demonstrates new and delete operators
 #include "Zombie.hpp"
-// #define zombie_on_stack
-#define zombie_in_heap
+#define zombie_on_stack
+// #define zombie_in_heap
 // #define zombie_randomChump
 
 int main() {
