@@ -8,7 +8,8 @@ private:
 	std::string name;
 	Weapon		*weapon;
 public:
-	HumanB(std::string name_) : name(name_), weapon(NULL) {}
+	HumanB(std::string name_) : name(name_) {this->weapon = NULL; }
+	~HumanB() {}
 	const std::string& getName(void) {return this->name; }
 	void setName(std::string name) {this->name = name; }
 	void setWeapon(Weapon &weapon_) {this->weapon = &weapon_; }

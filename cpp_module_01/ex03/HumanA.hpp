@@ -12,6 +12,7 @@ private:
 	Weapon&		weapon;
 public:
 	HumanA(std::string name_, Weapon& weapon_);
+	~HumanA() {}
 	const std::string& getName(void);
 	void setName(std::string name);
 	void attack(void);
