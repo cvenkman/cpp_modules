@@ -9,7 +9,7 @@ class Zombie {
 private:
 	std::string name;
 public:
-	Zombie(std::string name_ = "unknown") : name(name_) {}
+	Zombie(std::string name_ = "unknown");
 	~Zombie();
 	void setName(std::string name) {this->name = name; }
 	void announce(void);
