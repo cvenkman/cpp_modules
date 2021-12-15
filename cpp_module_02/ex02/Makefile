@@ -1,12 +1,12 @@
-NAME = karen
+NAME = fixed
 
-SRCS =	main.cpp Karen.cpp
+SRCS =	main.cpp Fixed.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
-HEADER = Karen.hpp
+HEADER = Fixed.hpp
 
 all : $(NAME)
 
