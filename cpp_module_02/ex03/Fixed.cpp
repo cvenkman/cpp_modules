@@ -3,26 +3,13 @@
 
 const int Fixed::bits = 8;
 
-Fixed::Fixed() : value(0) {
-	// std::cout << "Default constructor called" << std::endl;
-}
-
-Fixed::Fixed(int _value) : value(_value << this->bits) {
-	// std::cout << "Int constructor called" << std::endl;
-}
-
+Fixed::Fixed() : value(0) {}
+Fixed::Fixed(int _value) : value(_value << this->bits) {}
 Fixed::Fixed(const float _value) :
-	value(roundf(_value * (1 << this->bits))) {
-	// std::cout << "Float constructor called" << std::endl;
-}
+	value(roundf(_value * (1 << this->bits))) {}
 
-Fixed::Fixed(const Fixed &obj) : value(obj.value) {
-	// std::cout << "Copy constructor called" << std::endl;
-}
-
-Fixed::~Fixed() {
-	// std::cout << "Destructor called" << std::endl;
-}
+Fixed::Fixed(const Fixed &obj) : value(obj.value) {}
+Fixed::~Fixed() {}
 
 int Fixed::getRawBits(void) const {
 	return this->value;
@@ -42,8 +29,7 @@ int Fixed::toInt(void) const {
 	return value_int;
 }
 
-Fixed& Fixed::operator= (const Fixed& obj) {
-	// std::cout << "Assignation operator called" << std::endl;
+const Fixed& Fixed::operator= (const Fixed& obj) {
 	this->value = obj.value;
 	return *this;
 }
@@ -63,6 +49,11 @@ Fixed Fixed::operator- (const Fixed& obj) {
 	Fixed val;
 	val.setRawBits(value - obj.value);
 	return val;
+}
+
+Fixed Fixed::operator- (const Fixed& obj) const {
+	// return (value.toFloat())
+	return value - obj.value;
 }
 
 Fixed Fixed::operator* (const Fixed& obj) {
@@ -126,10 +117,38 @@ bool Fixed::operator<= (const Fixed& obj) {
 	return (this->value <= obj.value);
 }
 
-static Fixed& max(const Fixed& first, const Fixed& second) {
-	
+bool Fixed::operator== (const Fixed& obj)	const{
+	return (this->value == obj.value);
 }
 
-static Fixed& min(const Fixed& first, const Fixed& second) {
-	
+bool Fixed::operator!= (const Fixed& obj)	const{
+	return (this->value != obj.value);
+}
+
+bool Fixed::operator> (const Fixed& obj)	const{
+	return (this->value > obj.value);
+}
+
+bool Fixed::operator< (const Fixed& obj)	const{
+	return (this->value < obj.value);
+}
+
+bool Fixed::operator>= (const Fixed& obj)	const{
+	return (this->value >= obj.value);
+}
+
+bool Fixed::operator<= (const Fixed& obj)	const{
+	return (this->value <= obj.value);
+}
+
+Fixed const& Fixed::max(const Fixed& first, const Fixed& second) {
+	if (first >= second)
+		return first;
+	return second;
+}
+
+Fixed const& Fixed::min(const Fixed& first, const Fixed& second) {
+	if (first <= second)
+		return first;
+	return second;
 }

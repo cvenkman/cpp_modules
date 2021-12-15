@@ -41,8 +41,6 @@ public:
 	void setRawBits(int const raw);
 	float toFloat(void) const;
 	int toInt(void) const;
-	// static const Fixed& max(const Fixed& first, const Fixed& second);
-	// static const Fixed& min(const Fixed& first, const Fixed& second);
 	static const Fixed& max (Fixed const& first, Fixed const& second);
 	static const Fixed& min (Fixed const& first, Fixed const& second);
 
