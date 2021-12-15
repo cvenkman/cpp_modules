@@ -1,14 +1,14 @@
 #include "Fixed.hpp"
 
-#define arithmetic
 // #define increment
+// #define arithmetic
 // #define comparison
 
 // int main( void ) {
 // 	#ifdef arithmetic
 // 	{
 // 		Fixed a;
-// 		Fixed const b(10);
+// 		Fixed b(10);
 // 		Fixed c(42.42f);
 // 		Fixed d(b);
 // 		a = Fixed(1234.4321f);
@@ -61,10 +61,6 @@
 // 	}
 // 	#endif
 
-// 	Fixed a(1);
-// 	Fixed b(0.5f);
-
-// 	a = a - b ;
 // 	#ifdef increment
 // 	{
 // 		Fixed a;

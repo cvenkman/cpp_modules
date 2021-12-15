@@ -57,16 +57,12 @@ void foo1(A *a){
 }
 
 int main () {
+	B b;
+	foo(new B());
+	foo(new C());
+	foo(new D());
 
-	float a = 584.32f;
-	std::cout << std::bitset<30>(a) << std::endl;
-//	B b;
-	// foo(new B());
-//	foo(new C());
-//	foo(new D());
-//
-	// foo1(new B());
-//
-//	b.print2();
+	foo1(new B());
 
+	b.print2();
 }

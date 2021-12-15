@@ -126,38 +126,10 @@ bool Fixed::operator<= (const Fixed& obj) {
 	return (this->value <= obj.value);
 }
 
-bool Fixed::operator== (const Fixed& obj)	const{
-	return (this->value == obj.value);
+static Fixed& max(const Fixed& first, const Fixed& second) {
+	
 }
 
-bool Fixed::operator!= (const Fixed& obj)	const{
-	return (this->value != obj.value);
-}
-
-bool Fixed::operator> (const Fixed& obj)	const{
-	return (this->value > obj.value);
-}
-
-bool Fixed::operator< (const Fixed& obj)	const{
-	return (this->value < obj.value);
-}
-
-bool Fixed::operator>= (const Fixed& obj)	const{
-	return (this->value >= obj.value);
-}
-
-bool Fixed::operator<= (const Fixed& obj)	const{
-	return (this->value <= obj.value);
-}
-
-Fixed const& Fixed::max(const Fixed& first, const Fixed& second) {
-	if (first >= second)
-		return first;
-	return second;
-}
-
-Fixed const& Fixed::min(const Fixed& first, const Fixed& second) {
-	if (first <= second)
-		return first;
-	return second;
+static Fixed& min(const Fixed& first, const Fixed& second) {
+	
 }
