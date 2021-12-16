@@ -12,7 +12,7 @@ public:
 	~ClapTrap();
 	ClapTrap& operator= (const ClapTrap& obj);
 	std::string getName(void) const;
-	void setName(std::string _name);
+	virtual void setName(std::string _name);
 
 	void attack(std::string const & target);
 	void takeDamage(unsigned int amount);

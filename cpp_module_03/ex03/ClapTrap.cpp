@@ -24,6 +24,7 @@ ClapTrap::ClapTrap(const ClapTrap &obj) :
 ClapTrap::ClapTrap(std::string _name, int _hitpoints,
 	int _energy_points, int _attack_damage) {
 	this->name = _name;
+	// this->setName(_name);
 	this->hitpoints = _hitpoints;
 	this->energy_points = _energy_points;
 	this->attack_damage = _attack_damage;
