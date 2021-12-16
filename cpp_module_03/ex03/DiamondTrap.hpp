@@ -15,8 +15,8 @@ public:
 	std::string getName(void);
 	void setName(std::string _name);
 	DiamondTrap& operator= (const DiamondTrap& obj);
-	void highFivesGuys();
 	void attack(std::string const & target);
+	void whoAmI();
 private:
 	std::string name;
 };

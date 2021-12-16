@@ -19,6 +19,9 @@ int main(void) {
 	std::cout << "@@@ " << Hisoka.getName() << std::endl;
 	std::cout << "@@@ " << Gon.getName() << std::endl;
 	std::cout << "@@@ " << No_Name.getName() << std::endl;
+	Gon.whoAmI();
+	Hisoka.whoAmI();
+	No_Name.whoAmI();
 	// Gon = No_Name;
 	// std::cout << Gon.getName() << " " << No_Name.getName() << std::endl;
 	// Gon.attack(Hisoka.getName());

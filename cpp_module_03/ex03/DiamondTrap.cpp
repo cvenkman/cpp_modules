@@ -44,11 +44,6 @@ DiamondTrap::~DiamondTrap() {
 // 	return *this;
 // }
 
-void DiamondTrap::highFivesGuys() {
-	std::cout << "High fives request from " <<
-		this->name << std::endl;
-}
-
 void DiamondTrap::attack(std::string const & target) {
 	ScavTrap::attack(target);
 }
@@ -57,4 +52,9 @@ std::string DiamondTrap::getName(void) {return this->name; }
 
 void DiamondTrap::setName(std::string _name) {
 	this->name = _name;
+}
+
+void DiamondTrap::whoAmI() {
+	std::cout << "Hi! I am " << this->name <<
+		" and " << ClapTrap::getName() << std::endl;
 }
