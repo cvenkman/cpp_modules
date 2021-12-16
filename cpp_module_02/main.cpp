@@ -5,8 +5,8 @@ public:
 	A(){
 		std::cout << "Class A" << std::endl;
 	};
-	 virtual void print (){std::cout << "Method A" << std::endl;};
-	virtual void print2 () {
+	virtual void print (){std::cout << "Method A" << std::endl;};
+	void print2 () {
 		std::cout << "Method A2" << std::endl;
 	};
 	~A(){};
@@ -57,12 +57,16 @@ void foo1(A *a){
 }
 
 int main () {
-	B b;
+	D b;
+	std::cout << "---------" << std::endl;
 	foo(new B());
+	std::cout << "---------" << std::endl;
 	foo(new C());
+	std::cout << "---------" << std::endl;
 	foo(new D());
-
+	std::cout << "---------" << std::endl;
 	foo1(new B());
-
+	std::cout << "---------" << std::endl;
+	// b.print2();
 	b.print2();
 }

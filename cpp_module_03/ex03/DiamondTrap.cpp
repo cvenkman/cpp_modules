@@ -14,18 +14,10 @@ DiamondTrap::DiamondTrap(std::string _name) :
 	<< this->name << std::endl;
 }
 
-// DiamondTrap::DiamondTrap(std::string _name) :
-// 	ScavTrap(_name),
-// 	FragTrap(_name),
-// 	ClapTrap(_name + "_clap_name", 100, ScavTrap::energy_points, 30), name(_name) {
-// 	std::cout << "DIAMOND: Default constructor for "
-// 	<< this->name << std::endl;
-// }
-
 DiamondTrap::DiamondTrap(const DiamondTrap &obj) :
-	ClapTrap(obj.name, obj.hitpoints, obj.energy_points,
-	obj.attack_damage), ScavTrap(obj.name), FragTrap(obj.name) {
-	this->name = obj.name;
+	ClapTrap(obj.name + "_clap_name", obj.hitpoints, obj.energy_points,
+	obj.attack_damage), ScavTrap(obj.name), FragTrap(obj.name),
+	name(obj.name) {
 	std::cout << "DIAMOND: Copy constructor for "
 	<< this->name << std::endl;
 }
@@ -35,17 +27,14 @@ DiamondTrap::~DiamondTrap() {
 	<< this->name << std::endl;
 }
 
-// DiamondTrap& DiamondTrap::operator= (const DiamondTrap& obj) {
-// 	this->name = obj.name;
-// 	this->hitpoints = obj.hitpoints;
-// 	this->energy_points = obj.energy_points;
-// 	this->attack_damage = obj.attack_damage;
-// 	std::cout << "Diamond: operator=\n";
-// 	return *this;
-// }
-
-void DiamondTrap::attack(std::string const & target) {
-	ScavTrap::attack(target);
+DiamondTrap& DiamondTrap::operator= (const DiamondTrap& obj) {
+	ClapTrap::name = obj.name + "_clap_name";
+	this->name = obj.name;
+	this->hitpoints = obj.hitpoints;
+	this->energy_points = obj.energy_points;
+	this->attack_damage = obj.attack_damage;
+	std::cout << "DIAMOND: operator=\n";
+	return *this;
 }
 
 std::string DiamondTrap::getName(void) {return this->name; }
@@ -54,7 +43,19 @@ void DiamondTrap::setName(std::string _name) {
 	this->name = _name;
 }
 
+void DiamondTrap::attack(std::string const & target) {
+	ScavTrap::attack(target);
+}
+
 void DiamondTrap::whoAmI() {
 	std::cout << "Hi! I am " << this->name <<
 		" and " << ClapTrap::getName() << std::endl;
+}
+
+void DiamondTrap::printAllInfo() {
+	std::cout << "### " << this->name << " "
+		<< ClapTrap::name << " "
+		<< this->hitpoints << " "
+		<< this->energy_points << " "
+		<< this->attack_damage << std::endl;
 }
