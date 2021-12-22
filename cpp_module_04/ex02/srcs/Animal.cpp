@@ -32,14 +32,3 @@ std::string Animal::getType(void) const {
 void Animal::setType(std::string _type) {
 	this->type = _type;
 }
-
-void Animal::makeSound() {
-	std::cout << this->type << " say rrrr" << std::endl;
-}
-
-void Animal::makeSound() const{
-	std::cout << this->type << " say rrrr" << std::endl;
-}
-
-std::string Animal::getBrain(int index) {return NULL; }
-void Animal::setBrain(std::string idea, int index) {}

@@ -13,10 +13,10 @@ public:
 	Animal& operator= (const Animal& obj);
 	std::string getType(void) const;
 	void setType(std::string _name);
-	virtual void makeSound();
-	virtual void makeSound() const;
-	virtual std::string getBrain(int index);
-	virtual void setBrain(std::string idea, int index);
+	virtual void makeSound() = 0;
+	virtual void makeSound() const = 0;
+	virtual std::string getBrain(int index) = 0;
+	virtual void setBrain(std::string idea, int index) = 0;
 
 protected:
 	std::string type;
