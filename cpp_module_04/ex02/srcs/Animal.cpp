@@ -1,11 +1,11 @@
 #include "../includes/Animal.hpp"
 
 Animal::Animal() : type("nameless") {
-	std::cout << "ANIMAL: Obj(nameless) created with constructor\n";
+	std::cout << "ANIMAL: Obj(nameless) created with Default constructor\n";
 }
 
 Animal::Animal(std::string _type) : type(_type) {
-	std::cout << "ANIMAL: Default constructor for "
+	std::cout << "ANIMAL: constructor with type for "
 		<< type << std::endl;
 }
 

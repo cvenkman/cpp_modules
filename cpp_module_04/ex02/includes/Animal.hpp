@@ -5,12 +5,14 @@
 #include <string>
 
 class Animal {
-public:
+protected:
+	std::string type;
 	Animal();
 	Animal(std::string _name);
 	Animal(const Animal &obj);
-	virtual ~Animal();
 	Animal& operator= (const Animal& obj);
+public:
+	virtual ~Animal();
 	std::string getType(void) const;
 	void setType(std::string _name);
 	virtual void makeSound() = 0;
@@ -18,8 +20,6 @@ public:
 	virtual std::string getBrain(int index) = 0;
 	virtual void setBrain(std::string idea, int index) = 0;
 
-protected:
-	std::string type;
 };
 
 #endif
