@@ -31,7 +31,7 @@ int main()
 	// }
 
 	{
-		Animal *animals[ANIMAL_NUM];
+		// Animal *animals[ANIMAL_NUM];
 		Animal **animals = new Animal* [ANIMAL_NUM];
 		for (int i = 0; i < ANIMAL_NUM; i++) {
 			if (i % 2 == 0)

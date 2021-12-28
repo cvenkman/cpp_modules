@@ -9,6 +9,8 @@ OBJS_WRONG = $(SRCS_WRONG:.cpp=.o)
 
 FLAGS = -Wall -Wextra -Werror
 
+CC		= c++ -std=c++98
+
 HEADER = includes/AMateria.hpp includes/ICharacter.hpp \
 		includes/Ice.hpp includes/Character.hpp includes/IMateriaSource.hpp \
 		includes/MateriaSource.hpp includes/Cure.hpp
@@ -16,13 +18,13 @@ HEADER = includes/AMateria.hpp includes/ICharacter.hpp \
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
-	c++ $(OBJS) $(FLAGS) -o $(NAME)
+	$(CC) $(OBJS) $(FLAGS) -o $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -rf $(OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
 re : fclean all
 

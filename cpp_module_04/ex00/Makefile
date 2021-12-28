@@ -8,6 +8,8 @@ SRCS_WRONG = wrong_animal_class/WrongCat.cpp \
 				wrong_animal_class/WrongAnimal.cpp \
 				wrong_animal_class/wrong_main.cpp
 
+CC		= c++ -std=c++98
+
 OBJS = $(SRCS:.cpp=.o)
 
 OBJS_WRONG = $(SRCS_WRONG:.cpp=.o)
@@ -22,10 +24,10 @@ HEADER_WRONG = wrong_animal_class/WrongCat.hpp \
 all : $(NAME)
 
 $(NAME) : $(OBJS) $(HEADER)
-	c++ $(OBJS) $(FLAGS) -o $(NAME)
+	$(CC) $(OBJS) $(FLAGS) -o $(NAME)
 
 wrong_cat:  $(OBJS_WRONG) $(HEADER_WRONG)
-	c++ $(OBJS_WRONG) $(FLAGS) -o $(NAME_WRONG)
+	$(CC) $(OBJS_WRONG) $(FLAGS) -o $(NAME_WRONG)
 
 clean:
 	rm -f $(OBJS) $(OBJS_WRONG)

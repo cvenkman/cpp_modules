@@ -1,32 +1,28 @@
 NAME	= program
 
-CC		= g++ -std=c++98
-
-CFLAGS	= -Wall -Wextra -Werror
-
-
 SRCS =	main.cpp srcs/Animal.cpp srcs/Dog.cpp \
 		srcs/Cat.cpp srcs/Brain.cpp
 
-OBJS	= $(SRCS:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o)
 
-%.o: %.cpp
-	$(CC) $(FLAGS) -c $< -o $@
+CC		= c++ -std=c++98
 
-all:	${NAME}
+FLAGS = -Wall -Wextra -Werror
 
-${NAME}:	${OBJS}
-			${CC} ${CFLAGS} -o ${NAME} ${OBJS}
+HEADER = includes/Animal.hpp includes/Dog.hpp \
+		includes/Cat.hpp includes/Brain.hpp
+
+all : $(NAME)
+
+$(NAME) : $(OBJS) $(HEADER)
+	$(CC) $(OBJS) $(FLAGS) -o $(NAME)
 
 clean:
-			@echo "Cleaning: ${OBJS}"
-			@rm -rf ${OBJS}
+	rm -f $(OBJS)
 
-fclean:		clean
-			@rm -rf ${NAME}
-			@echo "\033[0mdelete "${NAME}"... \033[32mok\033[0m"
+fclean : clean
+	rm -f $(NAME)
 
-re:			fclean all
+re : fclean all
 
-.phony: all clean fclean re
-
+.PHONY: clean fclean re all
