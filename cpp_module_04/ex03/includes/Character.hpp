@@ -7,7 +7,6 @@ class Character : public ICharacter {
 private:
 	std::string name;
 	AMateria* inventory[4];
-	unsigned short int inventory_num;
 
 public:
 	Character();
@@ -17,7 +16,7 @@ public:
 	~Character();
 	std::string const& getName() const;
 	void equip(AMateria* _materia);
-	// void unequip(int idx);
+	void unequip(int index);
 	void use(int index, ICharacter& target);
 };
 #endif

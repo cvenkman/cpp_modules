@@ -7,10 +7,10 @@ class AMateria;
 
 class ICharacter {
 public:
-	virtual ~ICharacter() {std::cout << "ICh destr\n"; }
+	virtual ~ICharacter() {}
 	virtual std::string const& getName() const = 0;
 	virtual void equip(AMateria* _materia) = 0;
-	// virtual void unequip(int idx) = 0;
+	virtual void unequip(int idx) = 0;
 	virtual void use(int index, ICharacter& target) = 0;
 };
 

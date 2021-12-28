@@ -5,10 +5,10 @@ Ice::Ice() : AMateria("ice") {
 		<< type << std::endl;
 }
 
-// Ice::Ice(std::string const &_type) : AMateria(_type) {
-// 	std::cout << "ICE: constructor with type for "
-// 		<< type << std::endl;
-// }
+Ice::Ice(std::string const &_type) : AMateria(_type) {
+	std::cout << "ICE: constructor with type for "
+		<< type << std::endl;
+}
 
 Ice::Ice(const Ice& obj) : AMateria(obj.type) {
 	std::cout << "ICE: copy constructor for "
@@ -28,8 +28,7 @@ Ice& Ice::operator= (const Ice& obj) {
 }
 
 AMateria* Ice::clone() const {
-	AMateria *tmp = new Ice(*this);
-	return tmp;
+	return (new Ice(*this));
 }
 
 void Ice::use(ICharacter& target) {

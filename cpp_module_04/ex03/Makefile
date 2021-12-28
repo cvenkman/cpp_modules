@@ -1,8 +1,7 @@
 NAME = materia
 
-SRCS =	main.cpp srcs/AMateria.cpp \
-		srcs/Character.cpp srcs/Ice.cpp \
-
+SRCS =	main.cpp srcs/AMateria.cpp srcs/Cure.cpp\
+		srcs/Character.cpp srcs/Ice.cpp srcs/MateriaSource.cpp\
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -11,7 +10,8 @@ OBJS_WRONG = $(SRCS_WRONG:.cpp=.o)
 FLAGS = -Wall -Wextra -Werror
 
 HEADER = includes/AMateria.hpp includes/ICharacter.hpp \
-		includes/Ice.hpp includes/Character.hpp 
+		includes/Ice.hpp includes/Character.hpp includes/IMateriaSource.hpp \
+		includes/MateriaSource.hpp includes/Cure.hpp
 
 all : $(NAME)
 

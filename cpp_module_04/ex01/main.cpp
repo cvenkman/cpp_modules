@@ -7,8 +7,7 @@
 
 int main()
 {
-	//test for brain class
-	// {
+	// { //test for brain class
 	// 	Brain brain; // default constructor
 	// 	brain.setIdea("ddd", 1);
 	// 	// Brain brain_copy(brain); // copy constructor
@@ -17,8 +16,7 @@ int main()
 	// 		std::cout << brain.getIdea(i) << std::endl;
 	// }
 
-	//test deep copy
-	// {
+	// { // test deep copy
 	// 	Cat *cat = new Cat("cat");
 	// 	std::cout << "cat: " << cat->getBrain(1) << std::endl;
 	// 	cat->setBrain("qqq", 1);
@@ -33,7 +31,7 @@ int main()
 	// }
 
 	{
-		// Animal *animals[ANIMAL_NUM];
+		Animal *animals[ANIMAL_NUM];
 		Animal **animals = new Animal* [ANIMAL_NUM];
 		for (int i = 0; i < ANIMAL_NUM; i++) {
 			if (i % 2 == 0)
@@ -60,5 +58,6 @@ int main()
 			delete animals[i];
 		delete [] animals;
 	}
+	while (1);
 	return 0;
 }

@@ -11,11 +11,11 @@ class AMateria {
 protected:
 	// AMateria(const AMateria& obj);
 	// AMateria& operator= (const AMateria& obj);
-
-public:
 	std::string type;
 	AMateria(); // to protected
 	AMateria(std::string const &_type);
+
+public:
 	virtual ~AMateria();
 	std::string const &getType() const;
 	virtual AMateria* clone() const = 0;
