@@ -58,7 +58,7 @@ void Bureaucrat::decrementGrade(void) {
 	this->grade++;
 }
 
-// GradeTooLowException
+// GradeTooLowException class
 Bureaucrat::GradeTooLowException::GradeTooLowException(std::string const& _name, int const& grade) :
 	name(_name), grade(grade) {
 	// std::cout << "GradeTooLowException constructor\n";
@@ -69,7 +69,7 @@ Bureaucrat::GradeTooLowException::~GradeTooLowException() throw() {
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "grade too low";
+	return "Bureaucrat grade too low";
 }
 
 std::string const& Bureaucrat::GradeTooLowException::getName() const {
@@ -80,7 +80,7 @@ int const& Bureaucrat::GradeTooLowException::getGrade() const {
 	return this->grade;
 }
 
-// GradeTooHighException
+// GradeTooHighException class
 Bureaucrat::GradeTooHighException::GradeTooHighException(std::string const& _name, int const& grade) :
 	name(_name), grade(grade) {
 	// std::cout << "GradeTooHighException constructor\n";
@@ -91,7 +91,7 @@ Bureaucrat::GradeTooHighException::~GradeTooHighException() throw() {
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "grade too high";
+	return "Bureaucrat grade too high";
 }
 
 std::string const& Bureaucrat::GradeTooHighException::getName() const {
