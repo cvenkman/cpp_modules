@@ -11,14 +11,14 @@ Form::Form(std::string _name) : name(_name),
 	std::cout << "Form constructor\n";
 }
 
-Form::Form(std::string _name, bool _is_signed,
-	short int _grade_to_sign, short int _grade_to_execute) :
-		name(_name), is_form_signed(_is_signed),
+Form::Form(std::string _name, short int _grade_to_sign,
+	short int _grade_to_execute) :
+		name(_name), is_form_signed(false),
 		grade_to_sign(_grade_to_sign), grade_to_execute(_grade_to_execute) {
 	if (grade_to_execute < 1 || grade_to_sign < 1)
 		throw GradeTooHighException(name, grade_to_sign, grade_to_execute);
-	// if (grade_to_execute > 150 || grade_to_sign > 150)
-		// throw;
+	if (grade_to_execute > 150 || grade_to_sign > 150)
+		throw GradeTooLowException(name, grade_to_sign, grade_to_execute);
 	std::cout << "Form constructor\n";
 }
 
@@ -47,19 +47,19 @@ short int const& Form::getGradeToExecute() const {return grade_to_execute; }
 
 std::ostream& operator<<(std::ostream &out, const Form& obj)
 {
-    out << obj.getName() << " , is form signed: " << obj.getIsFormSigned()
+    out << obj.getName() << ", is form signed: " << obj.getIsFormSigned()
 	<< "; grade to signed: " << obj.getGradeToSign()
-	<< "; grade to execute: " << obj.getGradeToExecute() << std::endl;
+	<< "; grade to execute: " << obj.getGradeToExecute();
     return out;
 }
 
-void Form::beSigned(Bureaucrat *bureaucrat) {
+void Form::beSigned(Bureaucrat const *bureaucrat) {
 	if (bureaucrat->getGrade() < this->grade_to_sign) {
 		this->is_form_signed = true;
-		std::cout << "Form " << this->name << " is signed\n";
+		// std::cout << "form " << this->name << " is signed\n";
 	}
 	else
-		throw GradeTooLowException();
+		throw GradeTooHighException(name, grade_to_sign, grade_to_execute);
 }
 
 // GradeTooHighException class
@@ -71,9 +71,11 @@ Form::GradeTooHighException::~GradeTooHighException() throw() {}
 
 const char* Form::GradeTooHighException::what() const throw() {
 	if (this->grade_to_sign < 1)
-		return "Form grade to sign too hight, must be above zero\n";
+		this->msg = "form grade to sign too high, must be above zero";
 	else if (this->grade_to_execute < 1)
-		return "Form grade to execute too hight, must be above zero\n";
+		this->msg = "form grade to execute too high, must be above zero";
+	else this->msg = "grade too high";
+	return this->msg;
 }
 
 std::string const& Form::GradeTooHighException::getName() const {
@@ -95,9 +97,10 @@ Form::GradeTooLowException::~GradeTooLowException() throw() {}
 
 const char* Form::GradeTooLowException::what() const throw() {
 	if (this->grade_to_sign > 150)
-		return "Form grade to sign too low, must be above zero\n";
+		return "form grade to sign too low, must be above zero\n";
 	else if (this->grade_to_execute > 150)
-		return "Form grade to execute too low, must be above zero\n";
+		return "form grade to execute too low, must be above zero\n";
+	return "grade too low";
 }
 
 std::string const& Form::GradeTooLowException::getName() const {

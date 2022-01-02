@@ -1,51 +1,39 @@
 #include "Bureaucrat.hpp"
 
-void createAndTestNewBureaucrat(std::string name, int grade) {
-	Bureaucrat *bureaucrat = new Bureaucrat(name, grade);
-	std::cout << *bureaucrat;
-	try
-	{
-		bureaucrat->incrementGrade();
-		std::cout << "after increment " << bureaucrat->getGrade() << std::endl;
-		bureaucrat->decrementGrade();
-		std::cout << "after decrement " << bureaucrat->getGrade() << std::endl;
-		bureaucrat->decrementGrade();
-		std::cout << "after decrement " << bureaucrat->getGrade() << std::endl;
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	bureaucrat->incrementGrade();
-	std::cout << "after increment " << bureaucrat->getGrade() << std::endl;
-	delete bureaucrat;
-	std::cout << "------------\n";
-}
+// void createAndTestNewBureaucrat(std::string name, int grade) {
+// 	Bureaucrat *bureaucrat = new Bureaucrat(name, grade);
+// 	std::cout << *bureaucrat;
+// 	try
+// 	{
+// 		bureaucrat->incrementGrade();
+// 		std::cout << "after increment " << bureaucrat->getGrade() << std::endl;
+// 		bureaucrat->decrementGrade();
+// 		std::cout << "after decrement " << bureaucrat->getGrade() << std::endl;
+// 		bureaucrat->decrementGrade();
+// 		std::cout << "after decrement " << bureaucrat->getGrade() << std::endl;
+// 	}
+// 	catch (const std::exception& e)
+// 	{
+// 		std::cerr << e.what() << '\n';
+// 	}
+// 	bureaucrat->incrementGrade();
+// 	std::cout << "after increment " << bureaucrat->getGrade() << std::endl;
+// 	delete bureaucrat;
+// 	std::cout << "------------\n";
+// }
 
 int main() {
-	try
 	{
-		createAndTestNewBureaucrat("Igor", 150);
-		createAndTestNewBureaucrat("Igor", 160);
+		Bureaucrat igor("Igor", 40);
+		Form form("simple_form", 140, 140);
+		std::cout << igor << std::endl << form << std::endl;
+		igor.signForm(&form);
 	}
-	catch (Bureaucrat::GradeTooLowException const& error)
+	std::cout << "-----------------\n";
 	{
-		std::cerr << "Error: " << error.what() << " | " << error.getName()
-			<< " with grade " << error.getGrade() << std::endl;
+		Bureaucrat igor("Igor", 40);
+		Form form("simple_form", 2, 2);
+		std::cout << igor << std::endl << form << std::endl;
+		igor.signForm(&form);
 	}
-	catch (Bureaucrat::GradeTooHighException const& error)
-	{
-		std::cerr << "Error: " << error.what() << " | " << error.getName()
-			<< " with grade " << error.getGrade() << std::endl;
-	}
-	std::cout << "------------\n";
-	try
-	{
-		createAndTestNewBureaucrat("Igor", 0);
-	}
-	catch (std::exception const& error)
-	{
-		std::cerr << "Error: " << error.what() << std::endl;
-	}
-
 }

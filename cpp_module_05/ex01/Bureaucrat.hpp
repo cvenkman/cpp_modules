@@ -4,8 +4,10 @@
 #include <iostream>
 #include <string>
 #include <exception>
+#include "Form.hpp"
 
-class Bureaucrat;
+class Form;
+
 class Bureaucrat {
 private:
 	std::string const name;
@@ -18,14 +20,15 @@ public:
 	Bureaucrat(const Bureaucrat &obj);
 	~Bureaucrat();
 	Bureaucrat& operator= (const Bureaucrat& obj);
-	std::string const& getName(void) const;
-	short int const& getGrade(void) const;
-	void incrementGrade(void);
-	void decrementGrade(void);
+	std::string const& getName() const;
+	short int const& getGrade() const;
+	void incrementGrade();
+	void decrementGrade();
+	void signForm(Form *form);
 
 	class GradeTooLowException : public std::exception {
 		private:
-			const std::string name;
+			const std::string name; // add what msg 
 			const int grade;
 		public:
 			GradeTooLowException(std::string const& _name, int const& grade);
@@ -36,7 +39,7 @@ public:
 	};
 	class GradeTooHighException : public std::exception {
 		private:
-			const std::string name;
+			const std::string name;// add what msg 
 			const int grade;
 		public:
 			GradeTooHighException(std::string const& _name, int const& grade);

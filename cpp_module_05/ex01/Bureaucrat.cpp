@@ -39,7 +39,7 @@ Bureaucrat& Bureaucrat::operator= (const Bureaucrat& obj) {
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat& obj)
 {
-    out << obj.getName() << " , bureaucrat grade " << obj.getGrade() << std::endl;
+    out << obj.getName() << ", bureaucrat grade " << obj.getGrade();
     return out;
 }
 
@@ -56,6 +56,34 @@ void Bureaucrat::decrementGrade(void) {
 	if (grade >= 150)
 		throw GradeTooLowException(this->name, this->grade);
 	this->grade++;
+}
+
+void Bureaucrat::signForm(Form *form) {
+	if (form->getIsFormSigned() == true) {
+		std::cout << "form is already signed\n";
+		return;
+	}
+	try
+	{
+		form->beSigned(this);
+		std::cout << this->name << " signs "
+			<< form->getName() << std::endl;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << this->name << " cannot sign "
+		<< form->getName() << " because " << e.what();
+	}
+	// if (this->grade < form->getGradeToSign()) {
+	// 	// if (form->getIsFormSigned() == true) {
+	// 		std::cout << this->name << " signs "
+	// 			<< form->getName() << std::endl;
+	// 	// }
+	// }
+	// else {
+		// std::cout << this->name << " cannot sign "
+		// 	<< form->getName() << " because ";
+	// }
 }
 
 // GradeTooLowException class

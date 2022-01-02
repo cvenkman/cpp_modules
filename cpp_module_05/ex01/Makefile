@@ -1,12 +1,12 @@
 NAME = bzzz
 
-SRCS =	Bureaucrat.cpp main.cpp
+SRCS =	Bureaucrat.cpp main.cpp Form.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 DEP = $(OBJS:%.o=%.d)
 
-HEADER = Bureaucrat.hpp
+HEADER = Bureaucrat.hpp Form.hpp
 
 FLAGS = -Wall -Wextra -Werror
 
