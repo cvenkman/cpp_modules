@@ -1,25 +1,19 @@
 #include "Form.hpp"
 
 Form::Form() : name("nameless_form"), is_form_signed(false),
-	grade_to_sign(1), grade_to_execute(1) {
-	std::cout << "Form constructor\n";
-}
-
+	grade_to_sign(1), grade_to_execute(1) {}
 
 Form::Form(std::string _name) : name(_name),
-	is_form_signed(false), grade_to_sign(1), grade_to_execute(1) {
-	std::cout << "Form constructor\n";
-}
+	is_form_signed(false), grade_to_sign(1), grade_to_execute(1) {}
 
 Form::Form(std::string _name, short int _grade_to_sign,
 	short int _grade_to_execute) :
 		name(_name), is_form_signed(false),
 		grade_to_sign(_grade_to_sign), grade_to_execute(_grade_to_execute) {
 	if (grade_to_execute < 1 || grade_to_sign < 1)
-		throw GradeTooHighException(name, grade_to_sign, grade_to_execute);
+		throw GradeTooHighException(*this);
 	if (grade_to_execute > 150 || grade_to_sign > 150)
-		throw GradeTooLowException(name, grade_to_sign, grade_to_execute);
-	std::cout << "Form constructor\n";
+		throw GradeTooLowException(*this);
 }
 
 Form::Form(const Form &obj) : grade_to_sign(obj.grade_to_sign),
@@ -29,8 +23,7 @@ Form::Form(const Form &obj) : grade_to_sign(obj.grade_to_sign),
 	<< name << std::endl;
 }
 
-Form::~Form() { std::cout << "Form destructor\n"; }
-
+Form::~Form() {}
 
 Form& Form::operator= (const Form& obj) {
 	const_cast<std::string &>(this->name) = obj.name;
@@ -56,59 +49,61 @@ std::ostream& operator<<(std::ostream &out, const Form& obj)
 void Form::beSigned(Bureaucrat const *bureaucrat) {
 	if (bureaucrat->getGrade() < this->grade_to_sign) {
 		this->is_form_signed = true;
-		// std::cout << "form " << this->name << " is signed\n";
 	}
 	else
-		throw GradeTooHighException(name, grade_to_sign, grade_to_execute);
+		throw GradeTooHighException(*this);
 }
 
-// GradeTooHighException class
-Form::GradeTooHighException::GradeTooHighException(std::string const& _name, 
-		short int const _grade_to_sign, short int const _grade_to_execute) : 
-	name(_name), grade_to_sign(_grade_to_sign), grade_to_execute(_grade_to_execute) {}
+/**
+ *  GradeTooHighException class
+*/
+Form::GradeTooHighException::GradeTooHighException(Form &_form) : form(&_form) {
+	if (this->form->grade_to_sign < 1)
+		this->msg = this->getName() + " grade to sign too high, must be above zero";
+	else if (this->form->grade_to_execute < 1)
+		this->msg = this->getName() + " grade to execute too high, must be above zero";
+	else this->msg =  this->getName() + " grade too high for this bureaucrat";
+}
 
 Form::GradeTooHighException::~GradeTooHighException() throw() {}
 
 const char* Form::GradeTooHighException::what() const throw() {
-	if (this->grade_to_sign < 1)
-		this->msg = "form grade to sign too high, must be above zero";
-	else if (this->grade_to_execute < 1)
-		this->msg = "form grade to execute too high, must be above zero";
-	else this->msg = "grade too high";
-	return this->msg;
+	return this->msg.c_str();
 }
 
 std::string const& Form::GradeTooHighException::getName() const {
-	return this->name;
+	return this->form->name;
 }
 short int const& Form::GradeTooHighException::getGradeToSign() const {
-	return this->grade_to_sign;
+	return this->form->grade_to_sign;
 }
 short int const& Form::GradeTooHighException::getGradeToExecute() const {
-	return this->grade_to_execute;
+	return this->form->grade_to_execute;
 }
 
-// GradeTooLowException class
-Form::GradeTooLowException::GradeTooLowException(std::string const& _name, 
-		short int const _grade_to_sign, short int const _grade_to_execute) : 
-	name(_name), grade_to_sign(_grade_to_sign), grade_to_execute(_grade_to_execute) {}
+/**
+ * GradeTooLowException class
+*/
+Form::GradeTooLowException::GradeTooLowException(Form &_form) : form(&_form) {
+	if (this->form->grade_to_sign > 150)
+		this->msg = this->getName() + " grade to sign too low, must be above zero";
+	else if (this->form->grade_to_execute > 150)
+		this->msg = this->getName() + " grade to execute too low, must be above zero";
+	else this->msg =  this->getName() + " grade too low";
+}
 
 Form::GradeTooLowException::~GradeTooLowException() throw() {}
 
 const char* Form::GradeTooLowException::what() const throw() {
-	if (this->grade_to_sign > 150)
-		return "form grade to sign too low, must be above zero\n";
-	else if (this->grade_to_execute > 150)
-		return "form grade to execute too low, must be above zero\n";
-	return "grade too low";
+	return this->msg.c_str();
 }
 
 std::string const& Form::GradeTooLowException::getName() const {
-	return this->name;
+	return this->form->name;
 }
 short int const& Form::GradeTooLowException::getGradeToSign() const {
-	return this->grade_to_sign;
+	return this->form->grade_to_sign;
 }
 short int const& Form::GradeTooLowException::getGradeToExecute() const {
-	return this->grade_to_execute;
+	return this->form->grade_to_execute;
 }

@@ -1,14 +1,9 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("nameless"), grade(150) {
-	std::cout << "Bureaucrat: Default constructor\n";
-}
+Bureaucrat::Bureaucrat() : name("nameless"), grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string _name) :
-	name(_name), grade(150) {
-	std::cout << "Bureaucrat: constructor with name for "
-		<< name << std::endl;
-}
+	name(_name), grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string _name, short int _grade) :
 	name(_name), grade(_grade) {
@@ -16,8 +11,6 @@ Bureaucrat::Bureaucrat(std::string _name, short int _grade) :
 		throw GradeTooHighException(this->name, this->grade);
 	if (grade > 150)
 		throw GradeTooLowException(this->name, this->grade);
-	std::cout << "Bureaucrat: constructor with name for "
-		<< name << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &obj) {
@@ -26,10 +19,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &obj) {
 	<< name << std::endl;
 }
 
-Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat: Destructor for "
-	<< name << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
 Bureaucrat& Bureaucrat::operator= (const Bureaucrat& obj) {
 	if (this->name != obj.name)
@@ -72,29 +62,18 @@ void Bureaucrat::signForm(Form *form) {
 	catch (const std::exception& e)
 	{
 		std::cout << this->name << " cannot sign "
-		<< form->getName() << " because " << e.what();
+		<< form->getName() << " because " << e.what() << std::endl;
 	}
-	// if (this->grade < form->getGradeToSign()) {
-	// 	// if (form->getIsFormSigned() == true) {
-	// 		std::cout << this->name << " signs "
-	// 			<< form->getName() << std::endl;
-	// 	// }
-	// }
-	// else {
-		// std::cout << this->name << " cannot sign "
-		// 	<< form->getName() << " because ";
-	// }
+
 }
 
-// GradeTooLowException class
+/**
+ *  GradeTooLowException class
+*/
 Bureaucrat::GradeTooLowException::GradeTooLowException(std::string const& _name, int const& grade) :
-	name(_name), grade(grade) {
-	// std::cout << "GradeTooLowException constructor\n";
-}
+	name(_name), grade(grade) {}
 
-Bureaucrat::GradeTooLowException::~GradeTooLowException() throw() {
-	// std::cout << "GradeTooLowException destructor\n";
-}
+Bureaucrat::GradeTooLowException::~GradeTooLowException() throw() {}
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Bureaucrat grade too low";
@@ -108,15 +87,13 @@ int const& Bureaucrat::GradeTooLowException::getGrade() const {
 	return this->grade;
 }
 
-// GradeTooHighException class
+/**
+ *  GradeTooHighException class
+*/
 Bureaucrat::GradeTooHighException::GradeTooHighException(std::string const& _name, int const& grade) :
-	name(_name), grade(grade) {
-	// std::cout << "GradeTooHighException constructor\n";
-}
+	name(_name), grade(grade) {}
 
-Bureaucrat::GradeTooHighException::~GradeTooHighException() throw() {
-	// std::cout << "GradeTooHighException destructor\n";
-}
+Bureaucrat::GradeTooHighException::~GradeTooHighException() throw() {}
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
 	return "Bureaucrat grade too high";

@@ -15,16 +15,13 @@ private:
 	short int const grade_to_sign;
 	short int const grade_to_execute;
 
+public:
 	class GradeTooHighException : public std::exception {
 		private:
 			std::string msg;
-			std::string const name;
-			short int const grade_to_sign;
-			short int const grade_to_execute;
+			Form *form;
 		public:
-			GradeTooHighException(std::string const& _name, 
-				short int const _grade_to_sign,
-				short int const _grade_to_execute);
+			GradeTooHighException(Form &_form);
 			~GradeTooHighException() throw();
 			const char* what() const throw();
 			std::string const& getName() const;
@@ -35,13 +32,9 @@ private:
 	class GradeTooLowException : public std::exception {
 		private:
 			std::string msg;
-			std::string const name;
-			short int const grade_to_sign;
-			short int const grade_to_execute;
+			Form *form;
 		public:
-			GradeTooLowException(std::string const& _name, 
-				short int const _grade_to_sign,
-				short int const _grade_to_execute);
+			GradeTooLowException(Form &_form);
 			~GradeTooLowException() throw();
 			const char* what() const throw();
 			std::string const& getName() const;

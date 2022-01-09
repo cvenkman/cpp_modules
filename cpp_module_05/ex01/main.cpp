@@ -1,39 +1,51 @@
 #include "Bureaucrat.hpp"
 
-// void createAndTestNewBureaucrat(std::string name, int grade) {
-// 	Bureaucrat *bureaucrat = new Bureaucrat(name, grade);
-// 	std::cout << *bureaucrat;
-// 	try
-// 	{
-// 		bureaucrat->incrementGrade();
-// 		std::cout << "after increment " << bureaucrat->getGrade() << std::endl;
-// 		bureaucrat->decrementGrade();
-// 		std::cout << "after decrement " << bureaucrat->getGrade() << std::endl;
-// 		bureaucrat->decrementGrade();
-// 		std::cout << "after decrement " << bureaucrat->getGrade() << std::endl;
-// 	}
-// 	catch (const std::exception& e)
-// 	{
-// 		std::cerr << e.what() << '\n';
-// 	}
-// 	bureaucrat->incrementGrade();
-// 	std::cout << "after increment " << bureaucrat->getGrade() << std::endl;
-// 	delete bureaucrat;
-// 	std::cout << "------------\n";
-// }
-
 int main() {
 	{
-		Bureaucrat igor("Igor", 40);
-		Form form("simple_form", 140, 140);
-		std::cout << igor << std::endl << form << std::endl;
-		igor.signForm(&form);
+		try
+		{
+			Form *form = new Form("error_form", 0, 1);
+			Bureaucrat *igor = new Bureaucrat("Igor", 40);
+			igor->signForm(form);
+			delete form;
+			delete igor;
+		}
+		catch (std::exception &ex)
+		{
+			std::cout << ex.what() << std::endl;
+		}
 	}
 	std::cout << "-----------------\n";
 	{
-		Bureaucrat igor("Igor", 40);
-		Form form("simple_form", 2, 2);
-		std::cout << igor << std::endl << form << std::endl;
-		igor.signForm(&form);
+		try
+		{
+			Bureaucrat igor("Igor", 40);
+			Form form("simple_form", 140, 140);
+			std::cout << igor << std::endl;
+			std::cout << form << std::endl;
+			igor.signForm(&form);
+			igor.signForm(&form);
+		}
+		catch (std::exception &ex)
+		{
+			std::cout << ex.what() << std::endl;
+		}
+	}
+	std::cout << "-----------------\n";
+	{
+		try
+		{
+			// Bureaucrat igor("Igor", 160);
+			Bureaucrat igor("Igor", 150);
+			Form form("simple_form", 140, 140);
+			std::cout << igor << std::endl;
+			std::cout << form << std::endl;
+			igor.signForm(&form);
+		}
+		catch (std::exception &ex)
+		{
+			std::cout << "catch block\n";
+			std::cout << ex.what() << std::endl;
+		}
 	}
 }
