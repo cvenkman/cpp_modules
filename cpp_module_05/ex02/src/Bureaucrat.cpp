@@ -1,9 +1,6 @@
-#include "Bureaucrat.hpp"
+#include "../include/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("nameless"), grade(150) {}
-
-Bureaucrat::Bureaucrat(std::string _name) :
-	name(_name), grade(150) {}
 
 Bureaucrat::Bureaucrat(std::string _name, short int _grade) :
 	name(_name), grade(_grade) {
@@ -55,6 +52,12 @@ void Bureaucrat::signForm(Form *form) {
 	}
 	form->beSigned(this);
 	std::cout << this->name << " signs " << form->getName() << std::endl;
+}
+
+void Bureaucrat::executeForm(Form const &form) {
+	form.execute(*this);
+	if (form.getIsFormSigned() == true)
+		std::cout << this->name << " executes " << form.getName() << std::endl;
 }
 
 /**

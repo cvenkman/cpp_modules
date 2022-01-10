@@ -1,4 +1,4 @@
-NAME = bzzz
+NAME = program
 
 SRCS =	Bureaucrat.cpp main.cpp
 

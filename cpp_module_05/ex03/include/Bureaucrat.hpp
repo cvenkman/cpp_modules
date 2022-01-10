@@ -15,7 +15,6 @@ private:
 
 public:
 	Bureaucrat();
-	Bureaucrat(std::string _name);
 	Bureaucrat(std::string _name, short int _grade);
 	Bureaucrat(const Bureaucrat &obj);
 	~Bureaucrat();
@@ -25,6 +24,7 @@ public:
 	void incrementGrade();
 	void decrementGrade();
 	void signForm(Form *form);
+	void executeForm(Form const & form);
 
 	class GradeTooLowException : public std::exception {
 		private:
@@ -48,7 +48,6 @@ public:
 			virtual std::string const& getName() const;
 			virtual int const& getGrade() const;
 	};
-
 };
 
 std::ostream& operator<<(std::ostream &out, const Bureaucrat& obj);
