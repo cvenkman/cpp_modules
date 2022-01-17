@@ -13,8 +13,10 @@ Brain::Brain(const Brain &obj) {
 
 Brain& Brain::operator= (const Brain& obj) {
 	std::cout << "BRAIN: operator=\n";
-	for (int i = 0; i < 100; i++)
-		this->ideas[i] = obj.ideas[i];
+	if (this != &obj) {
+		for (int i = 0; i < 100; i++)
+			this->ideas[i] = obj.ideas[i];
+	}
 	return *this;
 }
 

@@ -25,12 +25,13 @@ Cat::~Cat() {
 }
 
 Cat& Cat::operator= (const Cat& obj) {
-	if (this->type != obj.type)
+	if (this != &obj) {
 		this->type = obj.type;
-	if (this->cat_brain != NULL)
-		delete this->cat_brain;
-	this->cat_brain = new Brain(*(obj.cat_brain));
-	std::cout << "CAT: operator=\n";
+		if (this->cat_brain != NULL)
+			delete this->cat_brain;
+		this->cat_brain = new Brain(*(obj.cat_brain));
+		std::cout << "CAT: operator=\n";
+	}
 	return *this;
 }
 

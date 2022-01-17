@@ -26,9 +26,11 @@ Cat::~Cat() {
 }
 
 Cat& Cat::operator= (const Cat& obj) {
-	this->type = obj.type;
-	this->cat_brain = new Brain(*(obj.cat_brain));
-	std::cout << "CAT: operator=\n";
+	if (this != &obj) {
+		this->type = obj.type;
+		this->cat_brain = new Brain(*(obj.cat_brain));
+		std::cout << "CAT: operator=\n";
+	}
 	return *this;
 }
 

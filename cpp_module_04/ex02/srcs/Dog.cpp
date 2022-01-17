@@ -26,9 +26,11 @@ Dog::~Dog() {
 }
 
 Dog& Dog::operator= (const Dog& obj) {
-	this->type = obj.type;
-	this->dog_brain = new Brain(*(obj.dog_brain));
-	std::cout << "DOG: operator=\n";
+	if (this != &obj) {
+		this->type = obj.type;
+		this->dog_brain = new Brain(*(obj.dog_brain));
+		std::cout << "DOG: operator=\n";
+	}
 	return *this;
 }
 

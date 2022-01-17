@@ -42,11 +42,13 @@ Array<T>::Array(Array<T> const& obj) {
 
 template <class T>
 Array<T>& Array<T>::operator= (Array<T> const& obj) {
-	delete[] this->array;
-	this->array = new T[obj.array_size]();
-	this->array_size = obj.array_size;
-	for (int i = 0; i < array_size; i++)
-		this->array[i] = obj.array[i];
+	if (this != &obj) {
+		delete[] this->array;
+		this->array = new T[obj.array_size]();
+		this->array_size = obj.array_size;
+		for (int i = 0; i < array_size; i++)
+			this->array[i] = obj.array[i];
+	}
 	return *this;
 }
 

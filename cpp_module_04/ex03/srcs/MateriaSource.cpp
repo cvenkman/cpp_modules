@@ -14,13 +14,15 @@ MateriaSource::MateriaSource(const MateriaSource& obj) {
 }
 
 MateriaSource& MateriaSource::operator= (const MateriaSource& obj) {
-	for (int i = 0; i < 4; i++)
-		if (this->studied_materia[i] != NULL) {
-			delete this->studied_materia[i];
-			this->studied_materia[i] = NULL;
-		}
-	for (int i = 0; i < 4; i++)
-		this->studied_materia[i] = obj.studied_materia[i];
+	if (this != &obj) {
+		for (int i = 0; i < 4; i++)
+			if (this->studied_materia[i] != NULL) {
+				delete this->studied_materia[i];
+				this->studied_materia[i] = NULL;
+			}
+		for (int i = 0; i < 4; i++)
+			this->studied_materia[i] = obj.studied_materia[i];
+	}
 	std::cout << "MATERIASOURCE: operator=\n";
 	return *this;
 }
