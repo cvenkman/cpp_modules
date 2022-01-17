@@ -1,3 +1,5 @@
+/* reinterpret_cast */
+
 #include "Data.hpp"
 
 uintptr_t serialize(Data *ptr)
@@ -17,8 +19,7 @@ int main() {
 	data->symbol = 's';
 
 	uintptr_t u = serialize(data);
-	Data *data2 = new Data;
-	data2 = deserialize(u);
+	Data *data2 = deserialize(u); 
 	data2->symbol = 'v';
 
 	std::cout << std::setw(42) << "pointer in uintptr_t after serialize: "

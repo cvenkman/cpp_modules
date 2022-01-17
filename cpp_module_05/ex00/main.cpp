@@ -1,3 +1,5 @@
+/* exception and try/catch */
+
 #include "Bureaucrat.hpp"
 
 void createAndTestNewBureaucrat(std::string name, int grade) {
@@ -47,5 +49,4 @@ int main() {
 	{
 		std::cerr << "Error: " << error.what() << std::endl;
 	}
-
 }

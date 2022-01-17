@@ -1,3 +1,5 @@
+/* polymorphism */
+
 #include "includes/Animal.hpp"
 #include "includes/Dog.hpp"
 #include "includes/Cat.hpp"

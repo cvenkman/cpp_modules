@@ -1,10 +1,8 @@
-// abstract class and interface
+/* interface */
 
-#include "includes/AMateria.hpp"
 #include "includes/Ice.hpp"
 #include "includes/Cure.hpp"
 #include "includes/Character.hpp"
-#include "includes/IMateriaSource.hpp"
 #include "includes/MateriaSource.hpp"
 
 int main()

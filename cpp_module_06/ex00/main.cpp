@@ -1,3 +1,5 @@
+/* static_cast */
+
 #include "Convert.hpp"
 
 int main(int argc, char **argv) {
@@ -14,5 +16,4 @@ int main(int argc, char **argv) {
 	{
 		std::cerr << e.what() << '\n';
 	}
-
 }

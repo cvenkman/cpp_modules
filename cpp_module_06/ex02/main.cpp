@@ -1,4 +1,5 @@
-// #include "Base.hpp"
+/* dynamic_cast */
+
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
@@ -54,7 +55,7 @@ void identify(Base &p)
 		(void)dynamic_cast<C&>(p);
 		std::cout << "reference is C\n";
 	}
-	catch (std::bad_cast)
+	catch (std::bad_cast &e)
 	{
 		std::cout << "reference is not C\n";
 	}
