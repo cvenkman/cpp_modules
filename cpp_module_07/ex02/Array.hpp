@@ -24,7 +24,11 @@ template <class T>
 Array<T>::Array() : array_size(0), array(NULL) {};
 
 template <class T>
-Array<T>::Array(unsigned int n) : array_size(n), array(new T[n]()) {};
+Array<T>::Array(unsigned int n) : array_size(n) {
+	if (n == 0)
+		Array();
+	array = new T[n]();
+};
 
 template <class T>
 Array<T>::~Array() {

@@ -59,5 +59,4 @@ int main(void) {
 		}
 		delete arr;
 	}
-	while (1);
 }

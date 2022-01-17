@@ -16,7 +16,7 @@ int main(void) {
 		for (int i = 0; i < 10; i++)
 			array[i] = i;
 		print_array(array);
-		iter(array, 10, &foo);
+		iter(array, 10, foo);
 		print_array(array);
 	}
 	std::cout << "----------\n";
@@ -24,6 +24,6 @@ int main(void) {
 	for (int i = 0; i < 10; i++)
 		array[i] = 'a';
 	print_array(array);
-	iter(array, 10, &foo);
+	iter(array, 10, foo);
 	print_array(array);
 }
