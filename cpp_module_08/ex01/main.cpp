@@ -1,5 +1,4 @@
 #include "span.hpp"
-#include <iostream>
 
 int main(void) {
 	Span sp(-5);
