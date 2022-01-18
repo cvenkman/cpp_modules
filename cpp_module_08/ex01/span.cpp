@@ -4,6 +4,15 @@ Span::Span() : N(0) {}
 Span::Span(unsigned int const &N) : N(N) {}
 Span::~Span() {}
 
+Span::Span(Span const& obj) {
+	*this = obj;
+}
+
+Span const& Span::operator=(Span const& obj) {
+	this->array = obj.array;
+	this->N = obj.N;
+}
+
 void Span::addNumber(int const &num) {
 	if (this->array.size() == N)
 		throw VectorFilledException();

@@ -12,6 +12,8 @@ private:
 public:
 	Span();
 	Span(unsigned int const &N);
+	Span(Span const& obj);
+	Span const& operator=(Span const& obj);
 	~Span();
 	void addNumber(int const &num);
 	void addNumber(std::vector<int>::iterator begin, 
