@@ -11,6 +11,7 @@ Span::Span(Span const& obj) {
 Span const& Span::operator=(Span const& obj) {
 	this->array = obj.array;
 	this->N = obj.N;
+	return *this;
 }
 
 void Span::addNumber(int const &num) {
